@@ -146,7 +146,7 @@ It took a lot of steps, but it actually took fewer steps than the other algorith
 - O(n log n) merge sort.  
 The best case, Ω, is still n log n, since we still sort each half first and then merge them together
 
-Θ, Theta, 최악의 경우와 최선의 경우의 running time이 같을 경우 Θ, Theta로 표기할 수 있다.  
+최악의 경우와 최선의 경우의 running time이 같을 경우 Θ, Theta로 표기할 수 있다.  
 which we use to describe running times of algorithms if the upper bound and lower bound is the same.  
 For example, merge sort has Θ(n log n) since the best and worst case both require the same number of steps.  
-And selection sort has Θ(n2).
+And selection sort has Θ(n^2).

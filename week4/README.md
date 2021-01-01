@@ -16,8 +16,6 @@
 
 ## Pointers
 C에서 메모리 주소(데이터가 저장된 메모리의 위치)를 얻고 싶을 때 연산자 `&` 를 붙인다.  
-- `&`: 실제 저장된 값 말고 저장된 주소가 필요할 때
-
 실제 자료형이 아닌 자료형을 저장하고 있는 주소를 변수로 담으려면 `*`를 붙여야 한다.  
 ```c
 int *p = &n;
@@ -110,3 +108,57 @@ void swap(int *a, int *b)
 2. 글로벌 변수가 그 아래에 저장된다.  
 3. malloc으로 메모리를 할당하면 힙에서 메모리를 할당한다. — heap  
 4. 로컬변수들은 아래부터 쌓이는 스택 영역에 저장된다. — Stack  
+
+## Files
+`fopen()`은 파일의 주소(`FILE` 타입의 pointer)를 리턴하는 함수로,  
+첫번째 인자로 파일명, 두번째 인자로 `r` for read, `w` for write, `a` for append 등을 받는다.
+we can read from and write to.
+```c
+int main(void)
+{
+    // Open file
+    FILE *file = fopen("phonebook.csv", "a");
+
+    // Get strings from user
+    char *name = get_string("Name: ");
+    char *number = get_string("Number: ");
+
+    // Print (write) strings to file
+    fprintf(file, "%s,%s\n", name, number); // 파일에 출력
+
+    // Close file
+    fclose(file);
+}
+```
+## JPEG
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        return 1;
+    }
+
+    FILE *file = fopen(argv[1], "r");
+
+    if (file == NULL)
+    {
+        return 1;
+    }
+ 
+    unsigned char bytes[3];
+    fread(bytes, 3, 1, file);
+
+    if (bytes[0] == 0xff && bytes[1] == 0xd8 && bytes[2] == 0xff)
+    {
+        printf("Maybe\n");
+    }
+    else
+    {
+        printf("No\n");
+    }
+    fclose(file);
+}
+```

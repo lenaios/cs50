@@ -19,7 +19,7 @@ int main(void)
     *y = 13;
 }
 ```
-`malloc` 함수는 메모리가 부족한 경우 등 메모리 할당에 문제가 생길 경우 NULL를 반환하므로, 체크하는 것이 좋다.  
+`malloc` 함수는 메모리가 부족하거나, 메모리 할당에 문제가 생길 경우 NULL를 반환하므로 체크하는 것이 좋다.  
 배열처럼 대괄호 `[]`를 사용해서 각 byte에 접근할 수 있다.
 ```c
 int main(void)
@@ -46,7 +46,7 @@ typedef struct node
 }
 node;
 ```
-pointer의 속성에 접근하는 방법은 다음과 같이 표현할 수 있다.
+pointer의 속성에 접근하기 위해 다음과 같이 표현할 수 있다.
 ```c
 node *n = malloc(sizeof(node));
 (*n).number
